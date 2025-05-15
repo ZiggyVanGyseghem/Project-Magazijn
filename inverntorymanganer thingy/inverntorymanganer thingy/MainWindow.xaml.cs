@@ -45,15 +45,20 @@ namespace MagazijnBeheersysteem
             try
             {
                 if (!int.TryParse(QuantityBox.Text, out int qty)) throw new Exception("Ongeldig aantal");
+                string unit = (UnitBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "st";
                 Product p;
 
                 if (CategoryBox.Text.ToLower() == "perishable" && ExpirationPicker.SelectedDate.HasValue)
-                    p = new PerishableProduct(NameBox.Text, CategoryBox.Text, qty, ExpirationPicker.SelectedDate.Value);
+                {
+                    p = new PerishableProduct(NameBox.Text, CategoryBox.Text, qty, unit, ExpirationPicker.SelectedDate.Value);
+                }
                 else
-                    p = new Product(NameBox.Text, CategoryBox.Text, qty);
+                {
+                    p = new Product(NameBox.Text, CategoryBox.Text, qty, unit);
+                }
 
                 _manager.Add(p);
-                RefreshGrid();
+                RefreshUI();
                 ClearInputs();
             }
             catch (Exception ex)
@@ -61,6 +66,7 @@ namespace MagazijnBeheersysteem
                 MessageBox.Show(ex.Message, "Fout bij toevoegen", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
         private void OnEditClicked(object sender, RoutedEventArgs e)
         {
@@ -115,12 +121,17 @@ namespace MagazijnBeheersysteem
                 CategoryBox.Text = sel.Category;
                 QuantityBox.Text = sel.Quantity.ToString();
 
+                var unitItem = UnitBox.Items.Cast<ComboBoxItem>().FirstOrDefault(item =>
+                    item.Content.ToString().Equals(sel.Unit, StringComparison.OrdinalIgnoreCase));
+                if (unitItem != null) UnitBox.SelectedItem = unitItem;
+
                 if (sel is PerishableProduct pp)
                     ExpirationPicker.SelectedDate = pp.ExpirationDate;
                 else
                     ExpirationPicker.SelectedDate = null;
             }
         }
+
 
         private void ClearInputs()
         {
@@ -153,6 +164,13 @@ namespace MagazijnBeheersysteem
             {
                 MessageBox.Show("Geef een naam op voor de nieuwe lijst.", "Lege naam", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void RefreshUI()
+        {
+            ListSelector.ItemsSource = _manager.ListNames.ToList();
+            ListSelector.SelectedItem = _manager.CurrentListName;
+            RefreshGrid(SearchBox.Text);
         }
 
 
