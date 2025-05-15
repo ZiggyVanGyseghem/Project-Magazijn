@@ -17,3 +17,23 @@ C:\Users\ziggy\source\repos\inverntorymanganer thingy\inverntorymanganer thingy\
 C:\Users\ziggy\source\repos\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.pdb
 C:\Users\ziggy\source\repos\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.genruntimeconfig.cache
 C:\Users\ziggy\source\repos\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\ref\inverntorymanganer thingy.dll
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy_MarkupCompile.cache
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.g.resources
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.AssemblyInfoInputs.cache
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.AssemblyInfo.cs
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.csproj.CoreCompileInputs.cache
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.sourcelink.json
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.dll
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\refint\inverntorymanganer thingy.dll
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.pdb
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\bin\Debug\net8.0-windows\inverntorymanganer thingy.exe
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\bin\Debug\net8.0-windows\inverntorymanganer thingy.deps.json
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\bin\Debug\net8.0-windows\inverntorymanganer thingy.runtimeconfig.json
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\bin\Debug\net8.0-windows\inverntorymanganer thingy.dll
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\bin\Debug\net8.0-windows\inverntorymanganer thingy.pdb
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\inverntorymanganer thingy.genruntimeconfig.cache
+C:\Users\ziggy\source\repos\Pillendoosje\Project-Magazijn\inverntorymanganer thingy\inverntorymanganer thingy\obj\Debug\net8.0-windows\ref\inverntorymanganer thingy.dll

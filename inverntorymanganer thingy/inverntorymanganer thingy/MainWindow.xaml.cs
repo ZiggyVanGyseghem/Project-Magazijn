@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using MagazijnBeheersysteem.Managers;
 using MagazijnBeheersysteem.Models;
 
@@ -14,20 +15,28 @@ namespace MagazijnBeheersysteem
         {
             InitializeComponent();
             _manager = new InventoryManager();
-            RefreshGrid();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ListSelector.ItemsSource = _manager.ListNames.ToList();
+            ListSelector.SelectedItem = _manager.ListNames.FirstOrDefault() ?? "Default";
         }
 
         private void RefreshGrid(string term = null)
         {
-            ProductsGrid.ItemsSource = _manager.Search(term);
+            ProductsGrid.ItemsSource = _manager.Search(term, OnlyPerishablesCheck.IsChecked == true);
         }
 
         private void OnSearchClicked(object sender, RoutedEventArgs e)
-            => RefreshGrid(SearchBox.Text);
+        {
+            RefreshGrid(SearchBox.Text);
+        }
 
         private void OnResetClicked(object sender, RoutedEventArgs e)
         {
             SearchBox.Clear();
+            OnlyPerishablesCheck.IsChecked = false;
             RefreshGrid();
         }
 
@@ -35,13 +44,13 @@ namespace MagazijnBeheersysteem
         {
             try
             {
-                if (!int.TryParse(QuantityBox.Text, out var qty))
-                    throw new Exception("Ongeldig aantal");
+                if (!int.TryParse(QuantityBox.Text, out int qty)) throw new Exception("Ongeldig aantal");
+                Product p;
 
-                Product p = CategoryBox.Text.Equals("Perishable", StringComparison.OrdinalIgnoreCase)
-                    && ExpirationPicker.SelectedDate.HasValue
-                    ? new PerishableProduct(NameBox.Text, CategoryBox.Text, qty, ExpirationPicker.SelectedDate.Value)
-                    : new Product(NameBox.Text, CategoryBox.Text, qty);
+                if (CategoryBox.Text.ToLower() == "perishable" && ExpirationPicker.SelectedDate.HasValue)
+                    p = new PerishableProduct(NameBox.Text, CategoryBox.Text, qty, ExpirationPicker.SelectedDate.Value);
+                else
+                    p = new Product(NameBox.Text, CategoryBox.Text, qty);
 
                 _manager.Add(p);
                 RefreshGrid();
@@ -49,29 +58,27 @@ namespace MagazijnBeheersysteem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Fout bij toevoegen",
-                                MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Fout bij toevoegen", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void OnEditClicked(object sender, RoutedEventArgs e)
         {
-            if (!(ProductsGrid.SelectedItem is Product sel))
+            if (ProductsGrid.SelectedItem is not Product sel)
             {
-                MessageBox.Show("Selecteer een product om te bewerken.",
-                                "Geen selectie", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecteer een product om te bewerken.", "Geen selectie", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             try
             {
-                if (!int.TryParse(QuantityBox.Text, out var qty))
-                    throw new Exception("Ongeldig aantal");
+                if (!int.TryParse(QuantityBox.Text, out int qty)) throw new Exception("Ongeldig aantal");
+                Product p;
 
-                Product p = sel is PerishableProduct
-                    && ExpirationPicker.SelectedDate.HasValue
-                    ? new PerishableProduct(NameBox.Text, CategoryBox.Text, qty, ExpirationPicker.SelectedDate.Value) { Id = sel.Id }
-                    : new Product(NameBox.Text, CategoryBox.Text, qty) { Id = sel.Id };
+                if (sel is PerishableProduct && ExpirationPicker.SelectedDate.HasValue)
+                    p = new PerishableProduct(NameBox.Text, CategoryBox.Text, qty, ExpirationPicker.SelectedDate.Value) { Id = sel.Id };
+                else
+                    p = new Product(NameBox.Text, CategoryBox.Text, qty) { Id = sel.Id };
 
                 _manager.Update(p);
                 RefreshGrid();
@@ -79,24 +86,19 @@ namespace MagazijnBeheersysteem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Fout bij bewerken",
-                                MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Fout bij bewerken", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void OnDeleteClicked(object sender, RoutedEventArgs e)
         {
-            if (!(ProductsGrid.SelectedItem is Product sel))
+            if (ProductsGrid.SelectedItem is not Product sel)
             {
-                MessageBox.Show("Selecteer een product om te verwijderen.",
-                                "Geen selectie", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecteer een product om te verwijderen.", "Geen selectie", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var result = MessageBox.Show(
-                $"Weet u zeker dat u '{sel.Name}' wilt verwijderen?",
-                "Bevestigen", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
+            var result = MessageBox.Show($"Weet u zeker dat u '{sel.Name}' wilt verwijderen?", "Bevestigen", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 _manager.Remove(sel.Id);
@@ -105,15 +107,18 @@ namespace MagazijnBeheersysteem
             }
         }
 
-        private void ProductsGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ProductsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ProductsGrid.SelectedItem is Product sel)
             {
                 NameBox.Text = sel.Name;
                 CategoryBox.Text = sel.Category;
                 QuantityBox.Text = sel.Quantity.ToString();
-                ExpirationPicker.SelectedDate =
-                    sel is PerishableProduct pp ? pp.ExpirationDate : (DateTime?)null;
+
+                if (sel is PerishableProduct pp)
+                    ExpirationPicker.SelectedDate = pp.ExpirationDate;
+                else
+                    ExpirationPicker.SelectedDate = null;
             }
         }
 
@@ -124,5 +129,33 @@ namespace MagazijnBeheersysteem
             QuantityBox.Clear();
             ExpirationPicker.SelectedDate = null;
         }
+
+        private void OnListChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListSelector.SelectedItem is string name)
+            {
+                _manager.SwitchList(name);
+                RefreshGrid();
+            }
+        }
+
+        private void OnCreateListClicked(object sender, RoutedEventArgs e)
+        {
+            string name = NewListBox.Text.Trim();
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                _manager.CreateList(name);
+                ListSelector.ItemsSource = _manager.ListNames.ToList();
+                ListSelector.SelectedItem = name;
+                NewListBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Geef een naam op voor de nieuwe lijst.", "Lege naam", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+
+
     }
 }
