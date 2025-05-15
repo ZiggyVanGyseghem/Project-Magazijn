@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("inverntorymanganer thingy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2936fea7783572dca9c85511831577b4a76cfdda")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d429177b299a1fb7fbcbb4fde18d7d40a92ec94")]
 [assembly: System.Reflection.AssemblyProductAttribute("inverntorymanganer thingy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("inverntorymanganer thingy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

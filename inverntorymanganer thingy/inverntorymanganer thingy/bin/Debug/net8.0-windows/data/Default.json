@@ -1,0 +1,20 @@
+[
+  {
+    "Id": "352dff55-e828-4419-9183-9d64eda1fa13",
+    "Name": "s",
+    "Category": "4",
+    "Quantity": 5,
+    "Unit": "st",
+    "CreatedDate": "2025-05-15T23:10:15.4596822+02:00",
+    "ExpirationDate": null
+  },
+  {
+    "Id": "58c6a73b-506b-46e6-8777-becf59090e89",
+    "Name": "5",
+    "Category": "s",
+    "Quantity": 5,
+    "Unit": "st",
+    "CreatedDate": "2025-05-15T23:10:25.8366792+02:00",
+    "ExpirationDate": null
+  }
+]

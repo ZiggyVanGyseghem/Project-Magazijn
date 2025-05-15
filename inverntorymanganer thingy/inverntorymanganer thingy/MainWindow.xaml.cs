@@ -91,28 +91,94 @@ namespace MagazijnBeheersysteem
 
         private void OnAddClicked(object sender, RoutedEventArgs e)
         {
-            if (!int.TryParse(QuantityBox.Text, out int qty)) return;
+            // 1) Validate Name
+            if (string.IsNullOrWhiteSpace(NameBox.Text))
+            {
+                MessageBox.Show("Naam is verplicht.", "Ontbrekend veld",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 2) Validate Category
+            if (string.IsNullOrWhiteSpace(CategoryBox.Text))
+            {
+                MessageBox.Show("Categorie is verplicht.", "Ontbrekend veld",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 3) Validate Quantity
+            if (!int.TryParse(QuantityBox.Text, out int qty))
+            {
+                MessageBox.Show("Aantal moet een geheel getal zijn.", "Ongeldig aantal",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 4) Read unit and expiration
             var unit = (UnitBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "st";
             DateTime? exp = ExpirationPicker.SelectedDate;
 
+            // 5) Create and add
             var p = new Product(NameBox.Text, CategoryBox.Text, qty, unit, exp);
             _manager.Add(p);
+
+            // 6) Refresh UI and clear inputs
             RefreshGrid();
             ClearInputs();
         }
+
 
         private void OnEditClicked(object sender, RoutedEventArgs e)
         {
-            if (ProductsGrid.SelectedItem is not Product sel) return;
-            if (!int.TryParse(QuantityBox.Text, out int qty)) return;
+            // Must have a selected product
+            if (ProductsGrid.SelectedItem is not Product sel)
+            {
+                MessageBox.Show("Selecteer eerst een product om te bewerken.", "Geen selectie",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 1) Validate Name
+            if (string.IsNullOrWhiteSpace(NameBox.Text))
+            {
+                MessageBox.Show("Naam is verplicht.", "Ontbrekend veld",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 2) Validate Category
+            if (string.IsNullOrWhiteSpace(CategoryBox.Text))
+            {
+                MessageBox.Show("Categorie is verplicht.", "Ontbrekend veld",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 3) Validate Quantity
+            if (!int.TryParse(QuantityBox.Text, out int qty))
+            {
+                MessageBox.Show("Aantal moet een geheel getal zijn.", "Ongeldig aantal",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 4) Read unit and expiration
             var unit = (UnitBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "st";
             DateTime? exp = ExpirationPicker.SelectedDate;
 
-            var p = new Product(NameBox.Text, CategoryBox.Text, qty, unit, exp) { Id = sel.Id };
+            // 5) Construct updated product (preserving Id)
+            var p = new Product(NameBox.Text, CategoryBox.Text, qty, unit, exp)
+            {
+                Id = sel.Id
+            };
             _manager.Update(p);
+
+            // 6) Refresh UI and clear inputs
             RefreshGrid();
             ClearInputs();
         }
+
 
         private void OnDeleteClicked(object sender, RoutedEventArgs e)
         {
