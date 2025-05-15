@@ -13,12 +13,23 @@
         <!-- Top controls: list, filter, search -->
         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
             <GroupBox Header="Lijst kiezen" Margin="0,0,10,0">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <ComboBox x:Name="ListSelector"
-                              Width="180"
-                              SelectionChanged="OnListChanged"/>
-                    <TextBox x:Name="NewListBox" Width="120" Margin="5,0,0,0"/>
-                    <Button Content="➕" Width="30" Click="OnCreateListClicked"/>
+              Width="160"
+              SelectionChanged="OnListChanged"/>
+                    <TextBox x:Name="NewListBox"
+             Width="100"
+             Margin="5,0,0,0"
+             ToolTip="Nieuwe lijstnaam"/>
+                    <Button Content="➕"
+            Width="30"
+            Click="OnCreateListClicked"
+            ToolTip="Maak nieuwe lijst"/>
+                    <Button Content="🗑️"
+            Width="30"
+            Margin="5,0,0,0"
+            Click="OnDeleteListClicked"
+            ToolTip="Verwijder geselecteerde lijst"/>
                 </StackPanel>
             </GroupBox>
 

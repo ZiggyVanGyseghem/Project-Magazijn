@@ -109,6 +109,29 @@ namespace MagazijnBeheersysteem
             RefreshGrid();
             ClearInputs();
         }
+        private void OnDeleteListClicked(object sender, RoutedEventArgs e)
+        {
+            if (ListSelector.SelectedItem is not string name || string.IsNullOrEmpty(name))
+                return;
+
+            // Prevent deleting the last list
+            if (_manager.ListNames.Count() <= 1)
+            {
+                MessageBox.Show("Je moet minstens één lijst bewaren.", "Verwijderen geannuleerd",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var result = MessageBox.Show(
+                $"Weet je zeker dat je de lijst '{name}' wilt verwijderen?\nAlle producten hierin gaan verloren.",
+                "Bevestig verwijderen", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                _manager.DeleteList(name);
+                RefreshGrid();
+            }
+        }
 
         private void ProductsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

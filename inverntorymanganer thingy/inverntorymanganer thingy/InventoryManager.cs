@@ -123,5 +123,29 @@ namespace MagazijnBeheersysteem.Managers
             var json = JsonSerializer.Serialize(_lists[_activeListName], opts);
             File.WriteAllText(path, json);
         }
+
+        /// <summary>
+        /// Deletes the given list (and its JSON file), and switches to another available list.
+        /// </summary>
+        public void DeleteList(string listName)
+        {
+            if (string.IsNullOrEmpty(listName) || !_lists.ContainsKey(listName))
+                return;
+
+            // Remove from in-memory dictionary
+            _lists.Remove(listName);
+
+            // Delete the file
+            var file = Path.Combine(_folder, listName + ".json");
+            if (File.Exists(file))
+                File.Delete(file);
+
+            // If we deleted the current, switch to first or default
+            if (_activeListName == listName)
+            {
+                _activeListName = _lists.Keys.FirstOrDefault() ?? "";
+            }
+        }
+
     }
 }
