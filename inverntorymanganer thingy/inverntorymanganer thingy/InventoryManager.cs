@@ -37,6 +37,15 @@ namespace MagazijnBeheersysteem.Managers
             }
         }
 
+        public void DeleteList(string name)
+        {
+            if (!_lists.ContainsKey(name)) return;
+            _lists.Remove(name);
+            var file = Path.Combine(_folder, name + ".json");
+            if (File.Exists(file)) File.Delete(file);
+            _activeListName = _lists.Keys.FirstOrDefault() ?? "Default";
+        }
+
         public void SwitchList(string name)
         {
             _activeListName = name;
@@ -58,32 +67,29 @@ namespace MagazijnBeheersysteem.Managers
         {
             var existing = _lists[_activeListName].FirstOrDefault(x => x.Id == p.Id);
             if (existing == null) return;
-
             existing.Name = p.Name;
             existing.Category = p.Category;
             existing.Quantity = p.Quantity;
             existing.Unit = p.Unit;
+            existing.CreatedDate = existing.CreatedDate; // preserve original
             existing.ExpirationDate = p.ExpirationDate;
             Save();
         }
 
         public void Remove(Guid id)
         {
-            var toRm = _lists[_activeListName].FirstOrDefault(x => x.Id == id);
-            if (toRm != null)
+            var toRemove = _lists[_activeListName].FirstOrDefault(x => x.Id == id);
+            if (toRemove != null)
             {
-                _lists[_activeListName].Remove(toRm);
+                _lists[_activeListName].Remove(toRemove);
                 Save();
             }
         }
 
-        /// <summary>
-        /// filterMode: 0=All, 1=Perishables only, 2=Non-perishables only
-        /// </summary>
+        /// <param name="filterMode">0=All, 1=Perishable only, 2=Non-Perishable only</param>
         public IEnumerable<Product> Search(string term, int filterMode)
         {
-            IEnumerable<Product> list = Products;
-
+            var list = Products;
             if (filterMode == 1)
                 list = list.Where(p => p.IsPerishable);
             else if (filterMode == 2)
@@ -104,6 +110,7 @@ namespace MagazijnBeheersysteem.Managers
         {
             var path = Path.Combine(_folder, listName + ".json");
             var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
             if (File.Exists(path))
             {
                 var json = File.ReadAllText(path);
@@ -123,29 +130,5 @@ namespace MagazijnBeheersysteem.Managers
             var json = JsonSerializer.Serialize(_lists[_activeListName], opts);
             File.WriteAllText(path, json);
         }
-
-        /// <summary>
-        /// Deletes the given list (and its JSON file), and switches to another available list.
-        /// </summary>
-        public void DeleteList(string listName)
-        {
-            if (string.IsNullOrEmpty(listName) || !_lists.ContainsKey(listName))
-                return;
-
-            // Remove from in-memory dictionary
-            _lists.Remove(listName);
-
-            // Delete the file
-            var file = Path.Combine(_folder, listName + ".json");
-            if (File.Exists(file))
-                File.Delete(file);
-
-            // If we deleted the current, switch to first or default
-            if (_activeListName == listName)
-            {
-                _activeListName = _lists.Keys.FirstOrDefault() ?? "";
-            }
-        }
-
     }
 }

@@ -11,10 +11,10 @@ namespace MagazijnBeheersysteem.Models
         public int Quantity { get; set; }
         public string Unit { get; set; } = "st";
 
-        // NEW: record when the item was added
+        // When item was first added
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
-        // Optional expiration date
+        // Optional expiry
         public DateTime? ExpirationDate { get; set; }
 
         [JsonIgnore]
@@ -29,10 +29,10 @@ namespace MagazijnBeheersysteem.Models
             get
             {
                 if (!ExpirationDate.HasValue) return false;
-                var total = (ExpirationDate.Value - CreatedDate).TotalDays;
-                if (total <= 0) return false;
-                var half = CreatedDate.AddDays(total / 2);
-                return DateTime.Now.Date >= half.Date && !IsExpired;
+                var totalDays = (ExpirationDate.Value - CreatedDate).TotalDays;
+                if (totalDays <= 0) return false;
+                var midPoint = CreatedDate.AddDays(totalDays / 2);
+                return DateTime.Now.Date >= midPoint.Date && !IsExpired;
             }
         }
 
@@ -45,7 +45,6 @@ namespace MagazijnBeheersysteem.Models
 
         public Product() { }
 
-        // Constructor now includes only exp; CreatedDate defaults
         public Product(string name, string category, int qty, string unit, DateTime? exp = null)
         {
             Name = name;

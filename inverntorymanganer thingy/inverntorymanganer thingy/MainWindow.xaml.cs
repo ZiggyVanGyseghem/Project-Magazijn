@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 using MagazijnBeheersysteem.Managers;
 using MagazijnBeheersysteem.Models;
 
@@ -10,41 +11,46 @@ namespace MagazijnBeheersysteem
     public partial class MainWindow : Window
     {
         private readonly InventoryManager _manager = new InventoryManager();
+        public ObservableCollection<Product> DisplayedProducts { get; } = new ObservableCollection<Product>();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            // Bind once—no more repeated ItemsSource assignments
+            ProductsGrid.ItemsSource = DisplayedProducts;
+
+            // Wire events AFTER InitializeComponent
             Loaded += MainWindow_Loaded;
+            SearchBox.TextChanged += (s, e) => RefreshGrid();
+            FilterBox.SelectionChanged += (s, e) => RefreshGrid();
+            ListSelector.SelectionChanged += (s, e) => RefreshGrid();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // Populate list selector
-            var names = _manager.ListNames.ToList();
-            ListSelector.ItemsSource = names;
-            if (!names.Contains(_manager.CurrentListName))
+            // Populate UI only once controls exist
+            ListSelector.ItemsSource = _manager.ListNames.ToList();
+            if (!_manager.ListNames.Contains(_manager.CurrentListName))
                 _manager.CreateList(_manager.CurrentListName);
             ListSelector.SelectedItem = _manager.CurrentListName;
 
-            // Set default filter
             FilterBox.SelectedIndex = 0;
-
-            // Initial load
             RefreshGrid();
         }
 
         private void RefreshGrid()
         {
-            // Guard against uninitialized controls
-            if (SearchBox == null || FilterBox == null || ProductsGrid == null)
-                return;
+            // Guard against controls not yet ready
+            string term = SearchBox?.Text ?? "";
+            int mode = FilterBox?.SelectedIndex ?? 0;
 
-            string term = SearchBox.Text;
-            int filterMode = FilterBox.SelectedIndex; // 0=All,1=Perish,2=NonPerish
-            ProductsGrid.ItemsSource = _manager.Search(term, filterMode).ToList();
+            var items = _manager.Search(term, mode);
+
+            DisplayedProducts.Clear();
+            foreach (var p in items)
+                DisplayedProducts.Add(p);
         }
-
-        private void OnSearchClicked(object sender, RoutedEventArgs e) => RefreshGrid();
 
         private void OnResetClicked(object sender, RoutedEventArgs e)
         {
@@ -56,26 +62,32 @@ namespace MagazijnBeheersysteem
         private void OnCreateListClicked(object sender, RoutedEventArgs e)
         {
             var name = NewListBox.Text?.Trim();
-            if (!string.IsNullOrEmpty(name))
-            {
-                _manager.CreateList(name);
-                NewListBox.Text = "";
-                ListSelector.ItemsSource = _manager.ListNames.ToList();
-                ListSelector.SelectedItem = name;
-                RefreshGrid();
-            }
+            if (string.IsNullOrEmpty(name)) return;
+
+            _manager.CreateList(name);
+            NewListBox.Text = "";
+            ListSelector.ItemsSource = _manager.ListNames.ToList();
+            ListSelector.SelectedItem = name;
+            RefreshGrid();
         }
 
-        private void OnListChanged(object sender, SelectionChangedEventArgs e)
+        private void OnDeleteListClicked(object sender, RoutedEventArgs e)
         {
-            if (ListSelector.SelectedItem is string name)
+            if (ListSelector.SelectedItem is string name && _manager.ListNames.Count() > 1)
             {
-                _manager.SwitchList(name);
-                RefreshGrid();
+                var ok = MessageBox.Show(
+                    $"Verwijder lijst '{name}'?",
+                    "Bevestigen", MessageBoxButton.YesNo, MessageBoxImage.Warning
+                );
+                if (ok == MessageBoxResult.Yes)
+                {
+                    _manager.DeleteList(name);
+                    ListSelector.ItemsSource = _manager.ListNames.ToList();
+                    ListSelector.SelectedItem = _manager.CurrentListName;
+                    RefreshGrid();
+                }
             }
         }
-
-        private void OnFilterChanged(object sender, SelectionChangedEventArgs e) => RefreshGrid();
 
         private void OnAddClicked(object sender, RoutedEventArgs e)
         {
@@ -109,29 +121,6 @@ namespace MagazijnBeheersysteem
             RefreshGrid();
             ClearInputs();
         }
-        private void OnDeleteListClicked(object sender, RoutedEventArgs e)
-        {
-            if (ListSelector.SelectedItem is not string name || string.IsNullOrEmpty(name))
-                return;
-
-            // Prevent deleting the last list
-            if (_manager.ListNames.Count() <= 1)
-            {
-                MessageBox.Show("Je moet minstens één lijst bewaren.", "Verwijderen geannuleerd",
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            var result = MessageBox.Show(
-                $"Weet je zeker dat je de lijst '{name}' wilt verwijderen?\nAlle producten hierin gaan verloren.",
-                "Bevestig verwijderen", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                _manager.DeleteList(name);
-                RefreshGrid();
-            }
-        }
 
         private void ProductsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -141,8 +130,8 @@ namespace MagazijnBeheersysteem
                 CategoryBox.Text = sel.Category;
                 QuantityBox.Text = sel.Quantity.ToString();
                 UnitBox.SelectedItem = UnitBox.Items
-                                          .Cast<ComboBoxItem>()
-                                          .FirstOrDefault(x => x.Content.ToString() == sel.Unit);
+                                         .Cast<ComboBoxItem>()
+                                         .FirstOrDefault(x => x.Content.ToString() == sel.Unit);
                 ExpirationPicker.SelectedDate = sel.ExpirationDate;
             }
         }
@@ -155,5 +144,27 @@ namespace MagazijnBeheersysteem
             UnitBox.SelectedIndex = 0;
             ExpirationPicker.SelectedDate = null;
         }
+        // Fired when the selected list in the ComboBox changes
+        private void OnListChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListSelector.SelectedItem is string name)
+            {
+                _manager.SwitchList(name);
+                RefreshGrid();
+            }
+        }
+
+        // Fired when the filter ComboBox changes (Alle / Bederfelijk / Niet-bederfelijk)
+        private void OnFilterChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshGrid();
+        }
+
+        // Fired when the “Zoek” button is clicked
+        private void OnSearchClicked(object sender, RoutedEventArgs e)
+        {
+            RefreshGrid();
+        }
+
     }
 }
