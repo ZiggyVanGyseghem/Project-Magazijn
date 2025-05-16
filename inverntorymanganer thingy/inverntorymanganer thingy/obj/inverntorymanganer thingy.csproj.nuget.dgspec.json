@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inverntorymanganer thingy.csproj": {}
+    "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inverntorymanganer thingy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inverntorymanganer thingy.csproj": {
+    "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inverntorymanganer thingy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inverntorymanganer thingy.csproj",
+        "projectUniqueName": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inverntorymanganer thingy.csproj",
         "projectName": "inverntorymanganer thingy",
-        "projectPath": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inverntorymanganer thingy.csproj",
+        "projectPath": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inverntorymanganer thingy.csproj",
         "packagesPath": "C:\\Users\\ziggy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\obj\\",
+        "outputPath": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -42,9 +42,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -68,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

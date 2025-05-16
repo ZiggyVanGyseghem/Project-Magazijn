@@ -1,0 +1,20 @@
+[
+  {
+    "Id": "0439bc92-b081-49ca-a6d0-a193a63be09c",
+    "Name": "bnv",
+    "Category": "bn",
+    "Quantity": 54,
+    "Unit": "st",
+    "ExpirationDate": "2025-05-31T00:00:00",
+    "CreatedDate": "2025-05-16T09:02:13.5818775+02:00"
+  },
+  {
+    "Id": "75dafeb2-08a7-46a1-b5d3-7a95b0145622",
+    "Name": "lll",
+    "Category": "l",
+    "Quantity": 55,
+    "Unit": "st",
+    "ExpirationDate": "2025-05-18T00:00:00",
+    "CreatedDate": "2025-05-16T09:04:08.3195217+02:00"
+  }
+]

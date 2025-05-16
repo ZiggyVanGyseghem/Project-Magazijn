@@ -91,7 +91,7 @@ namespace MagazijnBeheersysteem
 
         private void OnAddClicked(object sender, RoutedEventArgs e)
         {
-            // 1) Validate Name
+            // Validate Name
             if (string.IsNullOrWhiteSpace(NameBox.Text))
             {
                 MessageBox.Show("Naam is verplicht.", "Ontbrekend veld",
@@ -99,7 +99,7 @@ namespace MagazijnBeheersysteem
                 return;
             }
 
-            // 2) Validate Category
+            // Validate Category
             if (string.IsNullOrWhiteSpace(CategoryBox.Text))
             {
                 MessageBox.Show("Categorie is verplicht.", "Ontbrekend veld",
@@ -107,7 +107,7 @@ namespace MagazijnBeheersysteem
                 return;
             }
 
-            // 3) Validate Quantity
+            // Validate Quantity
             if (!int.TryParse(QuantityBox.Text, out int qty))
             {
                 MessageBox.Show("Aantal moet een geheel getal zijn.", "Ongeldig aantal",
@@ -115,15 +115,17 @@ namespace MagazijnBeheersysteem
                 return;
             }
 
-            // 4) Read unit and expiration
+            // Everything valid ⇒ create new product (or perishable)
             var unit = (UnitBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "st";
             DateTime? exp = ExpirationPicker.SelectedDate;
+            Product p;
 
-            // 5) Create and add
-            var p = new Product(NameBox.Text, CategoryBox.Text, qty, unit, exp);
+            if (exp.HasValue)
+                p = new PerishableProduct(NameBox.Text, CategoryBox.Text, qty, unit, exp.Value);
+            else
+                p = new Product(NameBox.Text, CategoryBox.Text, qty, unit, null);
+
             _manager.Add(p);
-
-            // 6) Refresh UI and clear inputs
             RefreshGrid();
             ClearInputs();
         }
@@ -131,7 +133,6 @@ namespace MagazijnBeheersysteem
 
         private void OnEditClicked(object sender, RoutedEventArgs e)
         {
-            // Must have a selected product
             if (ProductsGrid.SelectedItem is not Product sel)
             {
                 MessageBox.Show("Selecteer eerst een product om te bewerken.", "Geen selectie",
@@ -139,7 +140,7 @@ namespace MagazijnBeheersysteem
                 return;
             }
 
-            // 1) Validate Name
+            // Validate Name
             if (string.IsNullOrWhiteSpace(NameBox.Text))
             {
                 MessageBox.Show("Naam is verplicht.", "Ontbrekend veld",
@@ -147,7 +148,7 @@ namespace MagazijnBeheersysteem
                 return;
             }
 
-            // 2) Validate Category
+            // Validate Category
             if (string.IsNullOrWhiteSpace(CategoryBox.Text))
             {
                 MessageBox.Show("Categorie is verplicht.", "Ontbrekend veld",
@@ -155,7 +156,7 @@ namespace MagazijnBeheersysteem
                 return;
             }
 
-            // 3) Validate Quantity
+            // Validate Quantity
             if (!int.TryParse(QuantityBox.Text, out int qty))
             {
                 MessageBox.Show("Aantal moet een geheel getal zijn.", "Ongeldig aantal",
@@ -163,18 +164,17 @@ namespace MagazijnBeheersysteem
                 return;
             }
 
-            // 4) Read unit and expiration
+            // All valid ⇒ update existing
             var unit = (UnitBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "st";
             DateTime? exp = ExpirationPicker.SelectedDate;
+            Product p;
 
-            // 5) Construct updated product (preserving Id)
-            var p = new Product(NameBox.Text, CategoryBox.Text, qty, unit, exp)
-            {
-                Id = sel.Id
-            };
+            if (exp.HasValue)
+                p = new PerishableProduct(NameBox.Text, CategoryBox.Text, qty, unit, exp.Value) { Id = sel.Id };
+            else
+                p = new Product(NameBox.Text, CategoryBox.Text, qty, unit, null) { Id = sel.Id };
+
             _manager.Update(p);
-
-            // 6) Refresh UI and clear inputs
             RefreshGrid();
             ClearInputs();
         }

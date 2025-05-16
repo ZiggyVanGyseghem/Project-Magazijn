@@ -1,22 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\",
+  "WorkspaceRootPath": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\source\\repos\\pillendoosje\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|solutionrelative:inverntorymanganer thingy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\onedrive - hogeschool vives\\documenten\\github\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|solutionrelative:inverntorymanganer thingy\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\source\\repos\\pillendoosje\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|solutionrelative:inverntorymanganer thingy\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\onedrive - hogeschool vives\\documenten\\github\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\perishableproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|solutionrelative:inverntorymanganer thingy\\perishableproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\source\\repos\\pillendoosje\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inventorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\onedrive - hogeschool vives\\documenten\\github\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\inventorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|solutionrelative:inverntorymanganer thingy\\inventorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\source\\repos\\pillendoosje\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|solutionrelative:inverntorymanganer thingy\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\onedrive - hogeschool vives\\documenten\\github\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|solutionrelative:inverntorymanganer thingy\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|c:\\users\\ziggy\\onedrive - hogeschool vives\\documenten\\github\\project-magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9142D7AF-4DBA-4E89-85C4-24B653530FD1}|inverntorymanganer thingy\\inverntorymanganer thingy.csproj|solutionrelative:inverntorymanganer thingy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,55 +30,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\Product.cs",
+              "DocumentMoniker": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\Product.cs",
               "RelativeDocumentMoniker": "inverntorymanganer thingy\\Product.cs",
-              "ToolTip": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\Product.cs",
+              "ToolTip": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\Product.cs",
               "RelativeToolTip": "inverntorymanganer thingy\\Product.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAwDkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAkwDoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T20:13:26.132Z"
+              "WhenOpened": "2025-05-05T20:13:26.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PerishableProduct.cs",
+              "DocumentMoniker": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\PerishableProduct.cs",
+              "RelativeDocumentMoniker": "inverntorymanganer thingy\\PerishableProduct.cs",
+              "ToolTip": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\PerishableProduct.cs",
+              "RelativeToolTip": "inverntorymanganer thingy\\PerishableProduct.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T06:44:24.777Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "InventoryManager.cs",
-              "DocumentMoniker": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\InventoryManager.cs",
+              "DocumentMoniker": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\InventoryManager.cs",
               "RelativeDocumentMoniker": "inverntorymanganer thingy\\InventoryManager.cs",
-              "ToolTip": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\InventoryManager.cs",
+              "ToolTip": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\InventoryManager.cs",
               "RelativeToolTip": "inverntorymanganer thingy\\InventoryManager.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAwIYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAswIYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T20:12:55.245Z"
+              "WhenOpened": "2025-05-05T20:12:55.245Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\MainWindow.xaml",
               "RelativeDocumentMoniker": "inverntorymanganer thingy\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\MainWindow.xaml",
               "RelativeToolTip": "inverntorymanganer thingy\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-05T20:12:07.105Z"
+              "WhenOpened": "2025-05-05T20:12:07.105Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "inverntorymanganer thingy\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\ziggy\\source\\repos\\Pillendoosje\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\ziggy\\OneDrive - Hogeschool VIVES\\Documenten\\GitHub\\Project-Magazijn\\inverntorymanganer thingy\\inverntorymanganer thingy\\MainWindow.xaml.cs",
               "RelativeToolTip": "inverntorymanganer thingy\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAswKUAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-05T20:12:03.983Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 43,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
